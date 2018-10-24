@@ -1,0 +1,15 @@
+{
+  "name": "reason-slides",
+  "version": "1.0.0",
+  "description": "",
+  "main": "theme.js",
+  "scripts": {
+    "start": "mdx-deck reason.mdx"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mdx-deck": "^1.7.7"
+  }
+}

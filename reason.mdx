@@ -1,0 +1,262 @@
+export { default as theme } from './theme'
+
+<img src="https://reasonml.github.io/img/reason.svg" />
+
+---
+
+## What is ReasonML
+
+ - New syntax for **OCaml**
+ - Compiles to JS
+ - Looks like JS
+ - Made by react team
+
+---
+
+## <img src="https://www.vectorlogo.zone/logos/ocaml/ocaml-card.png" height="150" />
+
+ - ML family language (Standard ML)
+ - Functional language 🎉
+ - Immutable by default 🎉
+ - Statically typed (with inference!)
+ - Refined and polished for over 20 years
+ - **The language** for react
+ - *First react prototype was made in SML (similar to OCaml)*
+
+---
+
+<img src="http://2ality.com/2017/11/about-reasonml/architecture.jpg" />
+
+---
+
+ReasonML addresses the biggest problems
+that I’ve observed in building UI applications
+over the last five years.
+
+@jordwalke - ReactJS, ReasonML
+
+---
+
+```reason
+let sum = (a, b) => a + b;
+
+sum(2, 5);
+```
+
+---
+
+## The best reason features
+
+ - Types
+ - Variant
+ - Pattern matching
+
+---
+
+## Types
+
+```reason
+let a = 1;
+let a: int = 1;
+```
+
+---
+
+## Types
+
+```reason
+type circle = {
+  radius: float
+};
+
+let pi = 3.14159;
+
+let calculateArea = c => pi * c.radius * c.radius;
+```
+
+---
+
+## Variant
+
+```reason
+type action = 
+  | NextPage
+  | PreviousPage
+```
+---
+
+## Variant!
+```reason
+type action = 
+  | NextPage
+  | PreviousPage
+  | SelectPage(int)
+```
+
+---
+
+## Pattern matching
+
+```reason
+let numberAsWord = num =>
+  switch(num) {
+    | 1 => "one"
+    | 2 => "two"
+  }
+```
+
+---
+
+
+## Exhaustive pattern matching
+
+```reason
+let numberAsWord = num =>
+  switch(num) {
+    | 1 => "one"
+    | 2 => "two"
+    ^^^
+    You forgot to handle a possible value here, for example: 
+    0
+  }
+```
+
+---
+
+```reason
+let numberAsWord = num =>
+  switch(num) {
+    | 1 => "one"
+    | 2 => "two"
+    | _ => "whatever"
+  }
+```
+
+---
+
+## Pattern matching
+
+```reason
+
+let currentPage = 5;
+
+let reducer = action => {
+  switch(action) {
+    | NextPage => currentPage + 1
+    | PreviousPage => currentPage - 1
+    | SelectPage(page) => page
+  }
+}
+```
+
+---
+
+## Pattern matching
+
+```reason
+
+let currentPage = 5;
+
+let reducer = 
+  fun
+  | NextPage => currentPage + 1
+  | PreviousPage => currentPage - 1
+  | SelectPage(page) => page
+
+```
+
+---
+
+```reason
+
+let state = 5;
+
+type action = 
+  | NextPage
+  | PreviousPage
+  | SelectPage(int)
+
+let reducer = 
+  fun
+  | NextPage => state + 1
+  | PreviousPage => state - 1
+  | SelectPage(page) => page  
+
+```
+
+---
+
+## JS Part 1
+```js
+let state = 5;
+
+const NEXT_PAGE = 'NEXT_PAGE';
+const PREVIOUS_PAGE = 'PREVIOUS_PAGE';
+const SELECT_PAGE = 'SELECT_PAGE';
+
+const nextPage = () => ({ type: NEXT_PAGE });
+const previousPage = () => ({ type: PREVIOUS_PAGE });
+const selectPage = page => ({ type: NEXT_PAGE, page: page });
+```
+
+---
+
+## JS Part 2
+
+```js
+const reducer = action => {
+  switch(action.type) {
+    case NEXT_PAGE:
+      return state + 1;
+    case PREVIOUS_PAGE:
+      return state - 1;
+    case SELECT_PAGE:
+      return action.page;
+    default:
+      return state;
+  }
+}
+```
+
+---
+
+## So much more 😱
+
+ - Tuples
+ - Labeled arguments
+ - Built-in currying
+ - Pipeline operator
+ - Option
+ - Compiling to native
+ - Modules
+ - Functors
+ - .rei files
+ - Easy js interop
+
+---
+
+## Who uses it
+
+**messenger.com** as of 2017
+ - 50% Converted to Reason
+ - Full rebuild is ~2s
+ - Incremental build is <100ms
+
+<a href="https://reasonml.github.io/blog/2017/09/08/messenger-50-reason.html">[Source]</a>
+
+---
+
+## What are we waiting for?
+
+ - Async/await is coming  
+   [Github issue](https://github.com/facebook/reason/issues/1321)
+ - Ad-hoc polymorphism `1.0 + 2.0`  
+   [In progress](http://ocamllabs.io/doc/implicits.html)
+ - Standard library  
+   [Belt](https://bucklescript.github.io/bucklescript/api/Belt.html)
+
+
+---
+
+## ReasonReact
+
